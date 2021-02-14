@@ -7,6 +7,14 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: process.env.PREVIEW_TOKEN,
+        homeSlug: 'home',
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
